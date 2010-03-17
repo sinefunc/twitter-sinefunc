@@ -1,6 +1,14 @@
 = twitter-sinefunc
 
-Description goes here.
+    class CustomReply
+      include Twitter::Sinefunc::StatusUpdate
+      
+      attr_accessor :item
+
+      body "@:username ", username: lambda { item.user.login }
+
+      validates_body_has_added_content "must be FooBared"
+    end   
 
 == Note on Patches/Pull Requests
  
